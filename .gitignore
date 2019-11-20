@@ -1,0 +1,15 @@
+# Mac OS-specific storage files
+.DS_Store
+
+# vim
+*.swp
+*.swo
+
+# Mypy cache
+.mypy_cache/
+
+# data folders
+mosaics/
+mosaics_nofilter/
+cluster_vs_score_visualization/
+

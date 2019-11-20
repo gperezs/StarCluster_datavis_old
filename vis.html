@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>StarClusterData</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia;/*Arial, Helvetica, sans-serif;*/
+  background: #f1f1f1;
+}
+
+/*<h2>Star Cluster Data</h2>
+<p>In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.</p>
+<p>Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)</p>*/
+
+/* Style the header */
+header {
+  background-color: #678;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  background: #ccc;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+table {
+  float: left;
+  padding: 0px;
+  width: 100%;
+  
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 40%;
+  background-color: #f1f1f1;
+  font-size: 14px;
+  
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #789;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Create four equal columns that floats next to each other */
+.column3 {
+  float: left;
+  width: 8%;
+  padding: 10px;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.column2 {
+  float: left;
+  width: 8%;
+  padding: 10px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.column {
+  float: left;
+  width: 23%;
+  padding: 10px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.column4 {
+  float: left;
+  width: 23%;
+  padding: 0px;
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  height: 50px; /* Should be removed. Only for demonstration */
+}
+.column5 {
+  float: left;
+  width: 92%;
+  padding: 0px;
+  text-align: center;
+  height: 50px; /* Should be removed. Only for demonstration */
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column, .columnx, .columnx2 {
+    width: 100%;
+  }
+}
+
+}
+.columnx {
+  float: left;
+  width: 60%;
+  padding: 10px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+.columnx2 {
+  float: left;
+  width: 40%;
+  padding: 10px;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  /*height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 40px;
+  height: 40px;
+}
+
+.img-zoom-result {
+  /*border: 1px solid #d4d4d4;*/
+  /*set the size of the result div:*/
+  width: 215px;
+  height: 215px;
+}
+
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #567;
+  border-radius: 10%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 80px;
+  height: 80px;
+}
+
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 1000px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+</style>
+
+<script type="text/javascript">
+
+    document.getElementById("prevbut").onclick = clickEvent;
+	document.getElementById("nextbut").onclick = clickEvent;
+	
+	function start() {
+		window.idx = 0;
+		window.mm = 1;
+		readlinks("cluster_vs_score_visualization/class1vs1_low_score.txt");
+		readlinks3d("cluster_vs_score_visualization/class1vs1_low_score_3D.txt");
+		//loadims();
+		}
+	
+	function readlinks(allText) {
+	var file = new XMLHttpRequest();
+	file.open("GET", allText, true);
+	file.onreadystatechange = function() {
+	  if (file.readyState === 4) {  // Makes sure the document is ready to parse
+		if (file.status === 200) {  // Makes sure it's found the file
+		  text = file.responseText;
+         // document.getElementById("divine").innerHTML = text;
+		 processData(text);
+		 loadims();
+        }
+      }
+    }
+	file.send();
+	
+	}
+
+	function readlinks3d(allText) {
+	var file = new XMLHttpRequest();
+	file.open("GET", allText, true);
+	file.onreadystatechange = function() {
+	  if (file.readyState === 4) {  // Makes sure the document is ready to parse
+		if (file.status === 200) {  // Makes sure it's found the file
+		  text = file.responseText;
+         // document.getElementById("divine").innerHTML = text;
+		 processData3d(text);
+		 loadims();
+        }
+      }
+    } 
+	file.send();
+	}
+	
+	function processData(allText) {
+    	var allTextLines = allText.split(/\r\n|\n/);
+    	var headers = allTextLines[0].split(',');
+    	var lines = [];
+		window.totalelem = headers.length - 1;
+		valmax()
+		window.linki = headers[window.idx]
+    	//document.getElementById("divine").innerHTML = linki;
+	}
+	function processData3d(allText) {
+    	var allTextLines = allText.split(/\r\n|\n/);
+    	var headers = allTextLines[0].split(',');
+    	var lines = [];
+ 		window.linki3d_1 = headers[window.idx*5+0]
+		window.linki3d_2 = headers[window.idx*5+1]
+		window.linki3d_3 = headers[window.idx*5+2]
+		window.linki3d_4 = headers[window.idx*5+3]
+		window.linki3d_5 = headers[window.idx*5+4]
+    	//document.getElementById("divine3d").innerHTML = window.linki3d_1;
+	}
+	
+	function splitname(filename) {
+		var alllinkj = filename.split('/');
+		var filename = alllinkj[3];
+		var filenamesp = filename.replace('.jpg','');
+		var listn = filenamesp.split('_');
+		return listn;
+		}
+	
+	function loadims() {
+		var mosaicimx = document.getElementById('mosaicimx');
+		var dx1 = document.getElementById('3dx1');
+		var dx2 = document.getElementById('3dx2');
+		var dx3 = document.getElementById('3dx3');
+		var dx4 = document.getElementById('3dx4');
+		var dx5 = document.getElementById('3dx5');
+		mosaicimx.src = window.linki;
+		dx1.src = window.linki3d_1;
+        dx2.src = window.linki3d_2;
+		dx3.src = window.linki3d_3;
+		dx4.src = window.linki3d_4;
+		dx5.src = window.linki3d_5;
+		//var linkj = window.linki;
+		listn = splitname(window.linki)
+        document.getElementById('galaxy').innerHTML = listn[5]
+        document.getElementById('candidateid').innerHTML = listn[6]
+		document.getElementById('xcoord').innerHTML = listn[7]
+		document.getElementById('ycoord').innerHTML = listn[8]
+        document.getElementById('label').innerHTML = listn[1]
+        document.getElementById('prediction').innerHTML = listn[2]
+        document.getElementById('scorelabel').innerHTML = listn[3]
+        document.getElementById('scorepred').innerHTML = listn[4]
+		document.getElementById('scorediff').innerHTML = listn[4] - listn[3]
+        document.getElementById('submit').innerHTML = listn[1]
+        document.getElementById('clusteractual').innerHTML = listn[0]   
+        document.getElementById('clustertotal').innerHTML = window.totalelem
+		var elem = document.getElementById("lens1");
+		elem.parentNode.removeChild(elem);
+		imageZoom("mosaicimx", "myresultx");
+		}
+	
+		function resetidx() {
+			window.idx = 0
+			allvsall()
+						}
+			
+		function prevcand() {
+			if (window.idx == 0) {				
+				} else {
+				window.idx = window.idx - 1;
+				allvsall()	
+					}
+			}
+			
+		function nextcand() {
+			if (window.idx == window.totalelem-1) {				
+				} else {
+				window.idx = window.idx + 1;
+				allvsall()	
+					}
+			}	
+		
+		function valmax() {
+			if (window.idx > window.totalelem-1) {				
+				window.idx = window.totalelem-1;
+					}
+			}
+		
+		function allvsall() {
+			switch (window.mm) {
+				case 1:
+					onevsone()
+				break;
+				case 2:
+					onevstwo()
+				break;
+				case 3:
+					onevsthree()
+				break;
+				case 4:
+					onevsfour()
+				break;
+				case 5:
+					twovsone()
+				break;
+				case 6:
+					twovstwo()
+				break;
+				case 7:
+					twovsthree()
+				break;
+				case 8:
+					twovsfour()
+				break;
+				case 9:
+					threevsone()
+				break;
+				case 10:
+					threevstwo()
+				break;
+				case 11:
+					threevsthree()
+				break;
+				case 12:
+					threevsfour()
+				break;
+				case 13:
+					fourvsone()
+				break;
+				case 14:
+					fourvstwo()
+				break;
+				case 15:
+					fourvsthree()
+				break;
+				case 16:
+					fourvsfour()
+				break;
+				}
+			}
+			
+		function onevsone() {
+			document.getElementById('grupomatriz').innerHTML = "Class 1 - Predicted X " 
+			window.mm = 1;
+			readlinks("cluster_vs_score_visualization/class1vs1_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class1vs1_low_score_3D.txt");
+			}	
+			
+		function onevstwo() {
+			document.getElementById('grupomatriz').innerHTML = "Class 1 - Predicted 2 " 
+			window.mm = 2;
+			readlinks("cluster_vs_score_visualization/class1vs2_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class1vs2_low_score_3D.txt");
+			}
+			
+		function onevsthree() {
+			document.getElementById('grupomatriz').innerHTML = "Class 1 - Predicted 3 " 
+			window.mm = 3;
+			readlinks("cluster_vs_score_visualization/class1vs3_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class1vs3_low_score_3D.txt");
+			}
+		
+		function onevsfour() {
+			document.getElementById('grupomatriz').innerHTML = "Class 1 - Predicted 4 " 
+			window.mm = 4;
+			readlinks("cluster_vs_score_visualization/class1vs4_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class1vs4_low_score_3D.txt");
+			}
+			
+		function twovsone() {
+			document.getElementById('grupomatriz').innerHTML = "Class 2 - Predicted 1 "
+			window.mm = 5; 
+			readlinks("cluster_vs_score_visualization/class2vs1_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class2vs1_low_score_3D.txt");
+			}
+	
+		function twovstwo() {
+			document.getElementById('grupomatriz').innerHTML = "Class 2 - Predicted X " 
+			window.mm = 6;
+			readlinks("cluster_vs_score_visualization/class2vs2_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class2vs2_low_score_3D.txt");
+			}
+			
+		function twovsthree() {
+			document.getElementById('grupomatriz').innerHTML = "Class 2 - Predicted 3 "
+			window.mm = 7; 
+			readlinks("cluster_vs_score_visualization/class2vs3_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class2vs3_low_score_3D.txt");
+			}
+			
+		function twovsfour() {
+			document.getElementById('grupomatriz').innerHTML = "Class 2 - Predicted 4 " 
+			window.mm = 8;
+			readlinks("cluster_vs_score_visualization/class2vs4_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class2vs4_low_score_3D.txt");
+			}
+			
+		function threevsone() {
+			document.getElementById('grupomatriz').innerHTML = "Class 3 - Predicted 1 " 
+			window.mm = 9;
+			readlinks("cluster_vs_score_visualization/class3vs1_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class3vs1_low_score_3D.txt");
+			}	
+			
+		function threevstwo() {
+			document.getElementById('grupomatriz').innerHTML = "Class 3 - Predicted 2 "
+			window.mm = 10; 
+			readlinks("cluster_vs_score_visualization/class3vs2_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class3vs2_low_score_3D.txt");
+			}
+
+		function threevsthree() {
+			document.getElementById('grupomatriz').innerHTML = "Class 3 - Predicted X " 
+			window.mm = 11;
+			readlinks("cluster_vs_score_visualization/class3vs3_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class3vs3_low_score_3D.txt");
+			}
+
+		function threevsfour() {
+			document.getElementById('grupomatriz').innerHTML = "Class 3 - Predicted 4 " 
+			window.mm = 12;
+			readlinks("cluster_vs_score_visualization/class3vs4_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class3vs4_low_score_3D.txt");
+			}
+
+		function fourvsone() {
+			document.getElementById('grupomatriz').innerHTML = "Class 4 - Predicted 1 " 
+			window.mm = 13;
+			readlinks("cluster_vs_score_visualization/class4vs1_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class4vs1_low_score_3D.txt");
+			}
+
+		function fourvstwo() {
+			document.getElementById('grupomatriz').innerHTML = "Class 4 - Predicted 2 " 
+			window.mm = 14;
+			readlinks("cluster_vs_score_visualization/class4vs2_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class4vs2_low_score_3D.txt");
+			}
+
+		function fourvsthree() {
+			document.getElementById('grupomatriz').innerHTML = "Class 4 - Predicted 3 " 
+			window.mm = 15;
+			readlinks("cluster_vs_score_visualization/class4vs3_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class4vs3_low_score_3D.txt");
+			}
+
+		function fourvsfour() {
+			document.getElementById('grupomatriz').innerHTML = "Class 4 - Predicted X " 
+			window.mm = 16;
+			readlinks("cluster_vs_score_visualization/class4vs4_low_score.txt");
+			readlinks3d("cluster_vs_score_visualization/class4vs4_low_score_3D.txt");
+			}
+										
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.id = "lens1"
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx ) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height/2 - lens.offsetHeight) {y = img.height/2 - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+
+function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*create magnifier glass:*/
+  glass = document.createElement("DIV");
+  glass.id = "glass1"
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*insert magnifier glass:*/
+  img.parentElement.insertBefore(glass, img);
+  /*set background properties for the magnifier glass:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*execute a function when someone moves the magnifier glass over the image:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*prevent the magnifier glass from being positioned outside the image:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*set the position of the magnifier glass:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*display what the magnifier glass "sees":*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+
+function initComparisons() {
+  var x, i;
+  /*find all elements with an "overlay" class:*/
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /*once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function:*/
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /*get the width and height of the img element*/
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /*set the width of the img element to 50%:*/
+    img.style.width = (w / 2) + "px";
+    /*create slider:*/
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /*insert slider*/
+    img.parentElement.insertBefore(slider, img);
+    /*position the slider in the middle:*/
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /*execute a function when the mouse button is pressed:*/
+    slider.addEventListener("mousedown", slideReady);
+    /*and another function when the mouse button is released:*/
+    window.addEventListener("mouseup", slideFinish);
+    /*or touched (for touch screens:*/
+    slider.addEventListener("touchstart", slideReady);
+    /*and released (for touch screens:*/
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /*prevent any other actions that may occur when moving over the image:*/
+      e.preventDefault();
+      /*the slider is now clicked and ready to move:*/
+      clicked = 1;
+      /*execute a function when the slider is moved:*/
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /*the slider is no longer clicked:*/
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /*if the slider is no longer clicked, exit this function:*/
+      if (clicked == 0) return false;
+      /*get the cursor's x position:*/
+      pos = getCursorPos(e)
+      /*prevent the slider from being positioned outside the image:*/
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /*execute a function that will resize the overlay image according to the cursor:*/
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /*get the x positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x coordinate, relative to the image:*/
+      x = e.pageX - a.left;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /*resize the image:*/
+      img.style.width = x + "px";
+      /*position the slider:*/
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+
+
+<header>
+  <h2>Results Visualization (Lowest-Highest)</h2>
+   <p style="font-size: 12px; background: #ddd;" ><a href="http://www.gperezs.com/starcluster/home.html">Go to Star Cluster Data</a></p>
+<p style="font-size: 12px; background: #ddd;" ><a href="http://www.gperezs.com/starcluster/vis2.html">Go to Results Visualization (Highest-Lowest)</a></p>
+</header>
+
+<section>
+<nav>
+
+ <form> 
+        <h4 id="titulom">Confusion Matrix (Accuracy: 0.66)*</h4>
+        <p>Results on test set using model V023_23. Click on :</p>
+        
+        <div class="row">
+        <div class="column2" style="background-color:#ccc;">
+    		<h4>1</h4>
+  		</div>
+  		<div class="column" style="background-color:#aaa;">
+    		<h3 style="text-align: center;"><a href="javascript:onevsone()">0.76</a></h3>
+            <h3 style="text-align: center;">374</h3>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:onevstwo()">0.17</a></h3>
+            <h3 style="text-align: center;">86</h3>
+  		</div>
+  		<div class="column" style="background-color:#ddd;">
+    		<h3 style="text-align: center;"><a href="javascript:onevsthree()">0.01</a></h3>
+            <h3 style="text-align: center;">3</h3>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:onevsfour()">0.06</a></h3>
+            <h3 style="text-align: center;">31</h3>
+  		</div>
+		</div>
+        <div class="row">
+        <div class="column2" style="background-color:#ccc;">
+    		<h4>2</h4>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:twovsone()">0.18</a></h3>
+            <h3 style="text-align: center;">111</h3>
+  		</div>
+  		<div class="column" style="background-color:#bbb;">
+    		<h3 style="text-align: center;"><a href="javascript:twovstwo()">0.57</a></h3>
+            <h3 style="text-align: center;">357</h3>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:twovsthree()">0.12</a></h3>
+            <h3 style="text-align: center;">76</h3>
+   		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:twovsfour()">0.13</a></h3>
+            <h3 style="text-align: center;">79</h3>
+  		</div>
+		</div>
+        <div class="row">
+        <div class="column2" style="background-color:#ccc;">
+    		<h4>3</h4>
+  		</div>
+  		<div class="column" style="background-color:#ddd;">
+    		<h3 style="text-align: center;"><a href="javascript:threevsone()">0.01</a></h3>
+            <h3 style="text-align: center;">8</h3>
+  		</div>
+  		<div class="column" style="background-color:#ddd;">
+    		<h3 style="text-align: center;"><a href="javascript:threevstwo()">0.17</a></h3>
+            <h3 style="text-align: center;">109</h3>
+  		</div>
+  		<div class="column" style="background-color:#bbb;">
+    		<h3 style="text-align: center;"><a href="javascript:threevsthree()">0.50</a></h3>
+            <h3 style="text-align: center;">320</h3>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:threevsfour()">0.75</a></h3>
+            <h3 style="text-align: center;">209</h3>
+  		</div>
+		</div>
+        <div class="row">
+        <div class="column2" style="background-color:#ccc;">
+    		<h4>4</h4>
+  		</div>
+  		<div class="column" style="background-color:#ddd;">
+    		<h3 style="text-align: center;"><a href="javascript:fourvsone()">0.04</a></h3>
+            <h3 style="text-align: center;">51</h3>
+  		</div>
+  		<div class="column" style="background-color:#ddd;">
+    		<h3 style="text-align: center;"><a href="javascript:fourvstwo()">0.06</a></h3>
+            <h3 style="text-align: center;">76</h3>
+  		</div>
+  		<div class="column" style="background-color:#ccc;">
+    		<h3 style="text-align: center;"><a href="javascript:fourvsthree()">0.15</a></h3>
+            <h3 style="text-align: center;">205</h3>
+   		</div>
+  		<div class="column" style="background-color:#aaa;">
+    		<h3 style="text-align: center;"><a href="javascript:fourvsfour()">0.75</a></h3>
+            <h3 style="text-align: center;">1000</h3>
+  		</div>
+		</div>
+        <div class="row">
+        <div class="column3" style="background-color:#ccc;">
+    		<h2></h2>
+  		</div>
+  		<div class="column4" style="background-color:#ccc;">
+    		<h4>1</h4>
+  		</div>
+        <div class="column4" style="background-color:#ccc;">
+    		<h4>2</h4>
+  		</div>
+        <div class="column4" style="background-color:#ccc;">
+    		<h4>3</h4>
+  		</div>
+        <div class="column4" style="background-color:#ccc;">
+    		<h4>4</h4>
+  		</div>
+  		</div>
+        <div class="row">
+        <div class="column3" style="background-color:#ccc;">
+    		<h2></h2>
+  		</div>
+  		<div class="column5" style="background-color:#ccc;">
+    		<h4>Predicted label</h4>
+  		</div>
+  		</div>
+  		</div>
+		</div>
+  <hr>
+
+  <p style="font-size:12px;">Object class description:</p>
+    <ol style="font-size:12px;" start="1">
+        <li>Symetric, compact cluster</li>
+        <li>Concentrated object with some degree of assymetry</li>
+        <li>Multiple peak system</li>
+        <li>Spurious detections (foreground/background sources, single bright stars, artifacts)</li>
+    </ol>
+  <p style="font-size:12px;">* Normalized confusion matrix over rows (labels). Click on each score to visualize the classified cluster candidates for each case.</p>
+</form> 
+
+</nav>
+ 
+<nav style="background-color: #f1f1f1; width:20%;">
+<h4>Current List:</h4>
+<div  style="background: #f1f1f1; width:100%;" >
+   <table style="background-color: #f1f1f1; width:100%;">
+   <tr>
+   <td><p id='grupomatriz'>Class 1 - Predicted X </p></td>
+   <td>(</td>
+      <td><p id='clusteractual'>001</p></td>
+      <td><p>/</p></td>
+  <td><p id='clustertotal'>100</p></td>
+  <td>)</td>
+     </tr>
+	</table>
+    </div>
+   
+    
+<br>
+<hr>
+<p>Change to next or previous cluster candidate from the current sorted list:</p>
+    <div  style="background: #f1f1f1; width:100%;" >
+    	<input id="prevbut" type="button" value="<< Previous" onclick="prevcand();" />
+        <input id="nextbut" type="button" value="Next >>" onclick="nextcand();" />
+        </div>
+        <br>
+   <div  style="background: #f1f1f1; width:100%;" >
+   <table style="background-color: #f1f1f1; width:100%; font-size:11px; text-align: center;">
+   <tr>
+  		<td>RGBA</td>
+        <td>F275W</td>
+        <td>F336W</td>
+        <td>F438W</td>
+        <td>F555W</td>
+        <td>F814W</td>
+    </tr>
+	</table>
+    </div> <br>
+<div class="img-zoom-container">
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\candidate_images\class1vs1_low_score\001_1_4_-5.1924_-5.1924_ngc1566_285_3761_4527.jpg" alt="im.jpg" id="mosaicimx">
+<p>Zoomed image:</p>
+<div id="myresultx" class="img-zoom-result"></div> 
+<br>
+</div> <input id="resetbut" type="button" value="Reset" onclick="resetidx();" />
+
+</nav> 
+  
+<nav style="background-color: #f1f1f1; width:15%;">
+<p>F275W:</p>
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\3D_plots\class1vs1_low_score\001_1_1_4.8655_4.8655_ngc6503_1412_1523_2275_0.jpg" alt="im.jpg" id="3dx1">
+<p>F555W:</p>
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\3D_plots\class1vs1_low_score\001_1_1_4.8655_4.8655_ngc6503_1412_1523_2275_3.jpg" alt="im.jpg" id="3dx4">
+<p>F814W:</p>
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\3D_plots\class1vs1_low_score\001_1_1_4.8655_4.8655_ngc6503_1412_1523_2275_4.jpg" alt="im.jpg" id="3dx5">
+</nav>  
+
+<nav style="background-color: #f1f1f1; width:15%;">
+<p>F336W:</p>
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\3D_plots\class1vs1_low_score\001_1_1_4.8655_4.8655_ngc6503_1412_1523_2275_1.jpg" alt="im.jpg" id="3dx2">
+<p>F438W:</p>
+<img  style="background: #808080; width: 100%; height:auto;" src="cluster_vs_score_visualization\3D_plots\class1vs1_low_score\001_1_1_4.8655_4.8655_ngc6503_1412_1523_2275_2.jpg" alt="im.jpg" id="3dx3">
+</nav>  
+  
+<article style="background-color: #ccc; width:20%; height:100%;">
+<p></p>
+
+<p>Galaxy target:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='galaxy'>ngc1566</p>
+</div> 
+<p>Candidate ID:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='candidateid'>285</p>
+</div>
+<p>X coordinate:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='xcoord'>3761</p>
+</div>
+<p>Y coordinate:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='ycoord'>4527</p>
+</div>
+<p>Label (Class):</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='label'>1</p>
+</div>
+<p>Prediction (Class):</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='prediction'>1</p>
+</div>
+<p>Score (Label):</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='scorelabel'>-5.1924</p>
+</div>
+<p>Score (Prediction):</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='scorepred'>-5.1924</p>
+</div>
+<p>Score difference:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+<p id='scorediff'>0</p>
+</div>
+
+<hr> 
+<p>New Label:</p>
+<form action="/starcluster/newlabels.php" method="post">
+<input id="submit" type="text" name="newlabel" value="1" disabled>
+<input type="submit" value="Submit" disabled>
+</form>
+    
+<hr>    
+    <p>Related links:</p> 
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://archive.stsci.edu/prepds/legus/">Legacy ExtraGalactic UV Survey</a></p>
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://archive.stsci.edu/prepds/legus/dataproducts-public.html">LEGUS public access table</a></p>
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://ned.ipac.caltech.edu/byname?objname=ngc5194&hconst=67.8&omegam=0.308&omegav=0.692">NASA/IPAC Extragalactic Database</a></p>
+
+  </article>
+</section>
+<div id='divine'></div>
+<div id='divine3d'></div>
+<section>
+<footer>
+  <p></p>
+</footer>
+
+</section>
+
+
+</body>
+<script>
+window.onload = start();
+// Check for the various File API support.
+initComparisons();
+imageZoom("mosaicimx", "myresultx");
+document.getElementById("myCheck").checked = false;
+
+</script>
+</html>

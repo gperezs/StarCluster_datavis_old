@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>StarClusterData</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia;/*Arial, Helvetica, sans-serif;*/
+  background: #f1f1f1;
+}
+
+/*<h2>Star Cluster Data</h2>
+<p>In this example, we have created a header, two columns/boxes and a footer. On smaller screens, the columns will stack on top of each other.</p>
+<p>Resize the browser window to see the responsive effect (you will learn more about this in our next chapter - HTML Responsive.)</p>*/
+
+/* Style the header */
+header {
+  background-color: #678;
+  padding: 15px;
+  text-align: center;
+  font-size: 22px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 30%;
+  background: #ccc;
+  padding: 20px;
+  font-size: 14px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+table {
+  float: left;
+  padding: 0px;
+  width: 100%;
+  
+}
+
+article {
+  float: left;
+  padding: 20px;
+  width: 70%;
+  background-color: #f1f1f1;
+  font-size: 14px;
+  
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #789;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+
+* {box-sizing: border-box;}
+
+.img-zoom-container {
+  position: relative;
+}
+
+.img-zoom-lens {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  /*set the size of the lens:*/
+  width: 30px;
+  height: 30px;
+}
+
+.img-zoom-result {
+  /*border: 1px solid #d4d4d4;*/
+  /*set the size of the result div:*/
+  width: 115px;
+  height: 115px;
+}
+
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #567;
+  border-radius: 10%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 80px;
+  height: 80px;
+}
+
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 1000px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: #2196F3;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+</style>
+<script type="text/javascript">
+
+    document.getElementById("loadbut").onclick = clickEvent;
+	
+	function lboxfunc() {
+		clickEvent();
+		var lbox = document.getElementById("sel1");
+		var selelem = lbox.options[lbox.selectedIndex].value;
+		switch (selelem) {
+			case "ic4247":
+    			ic4247();
+   				break;
+			case "ic559":
+    			ic559();
+   				break;
+			case "ngc1313-e":
+    			ngc1313e();
+   				break;
+			case "ngc1313-w":
+    			ngc1313w();
+   				break;
+			case "ngc1433":
+    			ngc1433();
+   				break;
+			case "ngc1566":
+    			ngc1566();
+   				break;
+			case "ngc1705":
+    			ngc1705();
+   				break;
+			case "ngc3344":
+    			ngc3344();
+   				break;
+			case "ngc3351":
+    			ngc3351();
+   				break;
+			case "ngc3738":
+    			ngc3738();
+   				break;
+			case "ngc4242":
+    			ngc4242();
+   				break;
+			case "ngc4395-n":
+    			ngc4395n();
+   				break;
+			case "ngc4395-s":
+    			ngc4395s();
+   				break;
+			case "ngc4449":
+    			ngc4449();
+   				break;
+			case "ngc45":
+    			ngc45();
+   				break;
+			case "ngc4656":
+    			ngc4656();
+   				break;
+			case "ngc5238":
+    			ngc5238();
+   				break;
+			case "ngc5253":
+    			ngc5253();
+   				break;
+			case "ngc5474-c":
+    			ngc5474c();
+   				break;
+			case "ngc5477":
+    			ngc5477();
+   				break;
+			case "ngc628-c":
+    			ngc628c();
+   				break;
+			case "ngc628-e":
+    			ngc628e();
+   				break;
+			case "ngc6503":
+    			ngc6503();
+   				break;
+			case "ngc7793-e":
+    			ngc7793e();
+   				break;
+			case "ngc7793-w":
+    			ngc7793w();
+   				break;
+			case "ugc1249":
+    			ugc1249();
+   				break;
+			case "ugc4305":
+    			ugc4305();
+   				break;
+			case "ugc4459":
+    			ugc4459();
+   				break;
+			case "ugc5139":
+    			ugc5139();
+   				break;
+			case "ugc685":
+    			ugc685();
+   				break;
+			case "ugc695":
+    			ugc695();
+   				break;
+			case "ugc7408":
+    			ugc7408();
+   				break;
+			case "ugca281":
+    			ugca281();
+   				break;	
+		}	
+	}
+		
+    function clickEvent(){
+        var e = document.getElementById("sel1");
+        var gal = e.options[e.selectedIndex].value;
+        var radios = document.querySelector('input[name="sclass"]:checked').value;
+        var image = document.getElementById('mosaicim');
+        var image2 = document.getElementById('mosaicavg');
+		var image3 = document.getElementById('mosaicavg2');
+        var str1 = "mosaics/";
+		var str2 = "mosaics_nofilter/";
+        var checkBox = document.getElementById("myCheck");
+		if (checkBox.checked == true){
+			var filenamem = str1.concat(gal,"/mosaic_class_",radios,"_im_1.png");
+        } else {
+     		var filenamem = str2.concat(gal,"/mosaic_class_",radios,"_im_1.png");
+  		}
+		var filenamem2 = str1.concat(gal,"/avg_mosaic.png");
+		var filenamem3 = str2.concat(gal,"/avg_mosaic.png");
+        image.src = filenamem 
+        image2.src = filenamem2
+		image3.src = filenamem3
+		var elem = document.getElementById("glass1");
+		elem.parentNode.removeChild(elem);
+		magnify("mosaicim", 4);
+    }
+
+    function ic4247(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ic4247_galaxy.jpg"  
+        image.src = "mosaics/ic4247_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'IC 4247'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ic4247 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.11'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;67.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;762'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;717'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;1'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;4'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;3'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;37'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+    function ic559(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ic559_galaxy.jpg"
+        image.src = "mosaics/ic559_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'IC 559'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ic559 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.3'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;41.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;269'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;226'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;9'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;12'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;4'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;18'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+    function ngc1313e(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc1313-e_galaxy.jpg" 
+        image.src = "mosaics/ngc1313-e_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 1313-e'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc1313-e stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.39'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;40.7'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;5,284'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;4,639'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;42'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;95'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;122'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;386'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+    function ngc1313w(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc1313-w_galaxy.jpg"
+        image.src = "mosaics/ngc1313-w_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 1313-w'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc1313-w stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.39'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;40.7'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;3,784'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;2,925'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;85'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;191'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;210'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;373'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+    function ngc1433(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc1433_galaxy.jpg"
+        image.src = "mosaics/ngc1433_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 1433'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc1433 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;8.3'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;24.8'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,099'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;793'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;51'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;61'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;56'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;138'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,200 x 6,200 x 5'      
+    }
+
+    function ngc1566(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc1566_galaxy.jpg"
+        image.src = "mosaics/ngc1566_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 1566'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc1566 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;13.2'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;37.3'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;2,752'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;301'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;477'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;404'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;692'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;878'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,200 x 6,200 x 5'      
+    }
+
+function ngc1705(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc1705_galaxy.jpg" 
+        image.src = "mosaics/ngc1705_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 1705'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc1705 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.1'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;42.5'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;365'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;269'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;16'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;13'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;13'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;54'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,200 x 6,200 x 5'      
+    }
+
+function ngc3344(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc3344_galaxy.jpg"
+        image.src = "mosaics/ngc3344_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 3344'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc3344 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;7.0'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;23.7'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,527'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;970'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;119'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;118'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;159'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;161'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,400 x 7,400 x 5'      
+    }
+
+function ngc3351(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc3351_galaxy.jpg"
+        image.src = "mosaics/ngc3351_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 3351'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc3351 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;10.0'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;21.3'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,389'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;771'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;118'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;80'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;94'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;326'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,000 x 7,000 x 5'      
+    }
+
+function ngc3738(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc3738_galaxy.jpg"
+        image.src = "mosaics/ngc3738_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 3738'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc3738 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;40.5'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,528'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;1,086'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;49'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;93'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;86'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;214'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+function ngc4242(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc4242_galaxy.jpg"
+        image.src = "mosaics/ngc4242_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 4242'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc4242 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.8'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;40.5'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,080'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;847'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;117'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;60'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;14'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;42'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,500 x 6,500 x 5'      
+    }
+
+function ngc4395n(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc4395-n_galaxy.jpg"
+        image.src = "mosaics/ngc4395-n_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 4395-n'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc4395-n stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.3'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;33.6'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;291'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;233'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;8'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;12'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;19'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;19'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,000 x 6,000 x 5'      
+    }
+
+function ngc4395s(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc4395-s_galaxy.jpg"
+        image.src = "mosaics/ngc4395-s_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 4395-s'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc4395-s stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.3'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;33.6'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;837'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;669'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;31'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;64'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;42'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;31'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,100 x 8,100 x 5'      
+    }
+
+function ngc4449(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc4449_galaxy.jpg" 
+        image.src = "mosaics/ngc4449_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 4449'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc4449 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.31'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;44.8'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;2,853'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;1,372'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;143'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;282'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;182'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;874'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;11,737 x 11,737 x 5'      
+    }
+
+function ngc45(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc45_galaxy.jpg" 
+        image.src = "mosaics/ngc45_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 45'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc45 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;6.61'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;46.0'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;774'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;614'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;45'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;52'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;20'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;43'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,100 x 6,100 x 5'      
+    }
+
+function ngc4656(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc4656_galaxy.jpg"
+        image.src = "mosaics/ngc4656_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 4656'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc4656 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.5'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;0'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,703'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;1,272'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;93'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;91'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;78'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;169'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+function ngc5238(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc5238_galaxy.jpg"
+        image.src = "mosaics/ngc5238_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 5238'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc5238 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.51'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;53.9'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;618'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;600'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;4'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;4'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;1'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;9'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,600 x 7,600 x 5'      
+    }
+
+function ngc5253(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc5253_galaxy.jpg" 
+        image.src = "mosaics/ngc5253_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 5253'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc5253 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.15'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;67.7'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;2,100'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;1,866'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;20'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;37'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;23'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;154'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,500 x 7,500 x 5'      
+    }
+
+function ngc5474c(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc5474-c_galaxy.jpg"
+        image.src = "mosaics/ngc5474-c_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 5474-c'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc5474-c stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;6.8'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;26.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;4,275'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;3,954'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;48'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;95'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;34'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;144'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,600 x 7,600 x 5'      
+    }
+
+function ngc5477(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc5477_galaxy.jpg" 
+        image.src = "mosaics/ngc5477_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 5477'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc5477 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;6.4'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;40.1'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;534'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;462'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;5'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;9'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;9'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;49'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+function ngc628c(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc628-c_galaxy.jpg"
+        image.src = "mosaics/ngc628-c_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 628-c'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc628-c stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;9.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;25.2'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;3,080'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;1,521'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;334'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;357'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;326'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;542'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+function ngc628e(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc628-e_galaxy.jpg"
+        image.src = "mosaics/ngc628-e_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 628-e'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc628-e stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;9.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;25.2'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;593'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;212'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;92'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;80'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;87'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;122'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+function ngc6503(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc6503_galaxy.jpg"
+        image.src = "mosaics/ngc6503_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 6503'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc6503 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.27'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;70.2'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;4,225'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;3,755'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;71'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;96'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;131'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;172'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;5,400 x 5,400 x 5'      
+    }
+
+function ngc7793e(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc7793-e_galaxy.jpg" 
+        image.src = "mosaics/ngc7793-e_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 7793-e'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc7793-e stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.44'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;47.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;899'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;646'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;32'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;76'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;83'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;62'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,200 x 7,200 x 5'      
+    }
+
+function ngc7793w(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ngc7793-w_galaxy.jpg" 
+        image.src = "mosaics/ngc7793-w_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'NGC 7793-w'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ngc7793-w stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.44'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;47.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;2,794'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;2,495'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;51'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;84'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;86'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;78'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,500 x 7,500 x 5'      
+    }
+
+function ugc1249(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc1249_galaxy.jpg" 
+        image.src = "mosaics/ugc1249_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 1249'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc1249 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;6.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;63.3'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;1,000'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;779'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;13'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;35'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;40'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;133'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,500 x 7,500 x 5'      
+    }
+
+function ugc4305(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc4305_galaxy.jpg"
+        image.src = "mosaics/ugc4305_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 4305'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc4305 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.05'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;37.1'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;4,848'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;4,616'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;16'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;29'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;40'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;147'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;10,500 x 10,500 x 5'      
+    }
+
+function ugc4459(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc4459_galaxy.jpg" 
+        image.src = "mosaics/ugc4459_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 4459'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc4459 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.66'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;29.9'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;994'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;964'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;2'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;5'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;3'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;20'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,400 x 7,400 x 5'      
+    }
+
+function ugc5139(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc5139_galaxy.jpg"
+        image.src = "mosaics/ugc5139_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 5139'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc5139 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;3.98'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;33.6'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;917'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;878'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;2'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;7'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;7'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;23'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+function ugc685(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc685_galaxy.jpg" 
+        image.src = "mosaics/ugc685_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 685'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc685 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;4.83'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;41.4'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;464'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;444'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;7'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;4'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;3'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;6'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;7,400 x 7,400 x 5'      
+    }
+
+function ugc695(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc695_galaxy.jpg"
+        image.src = "mosaics/ugc695_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 695'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc695 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;10.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;35.1'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;184'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;73'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;4'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;7'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;6'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;94'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;6,200 x 6,200 x 5'      
+    }
+
+function ugc7408(){
+        clickEvent();
+        var image = document.getElementById('galaxyim'); 
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugc7408_galaxy.jpg"
+        image.src = "mosaics/ugc7408_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC 7408'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugc7408 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;6.7'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;62.5'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;305'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;227'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;19'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;16'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;11'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;32'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+
+function ugca281(){
+        clickEvent();
+        var image = document.getElementById('galaxyim');
+		var image2 = document.getElementById('galaxyim2');
+		image2.src = "mosaics/ugca281_galaxy.jpg" 
+        image.src = "mosaics/ugca281_galaxy_nofilter.jpg" 
+        document.getElementById('gtitle').innerHTML = 'UGC A281'
+        document.getElementById('gtitle2').innerHTML = 'Target galaxy ugca281 stats:'
+		document.getElementById('distance').innerHTML = 'Target distance (Mpc): &emsp;5.9'
+		document.getElementById('inclination').innerHTML = 'Inclination (degrees): &emsp;41.1'
+        document.getElementById('tobj').innerHTML = 'Total objects: &emsp;&emsp;327'
+        document.getElementById('class0').innerHTML = 'Class 0 objects: &emsp;278'
+        document.getElementById('class1').innerHTML = 'Class 1 objects: &emsp;2'
+        document.getElementById('class2').innerHTML = 'Class 2 objects: &emsp;9'
+        document.getElementById('class3').innerHTML = 'Class 3 objects: &emsp;4'
+        document.getElementById('class4').innerHTML = 'Class 4 objects: &emsp;34'   
+        document.getElementById('imsize').innerHTML = 'Original image size: &emsp;8,000 x 8,000 x 5'      
+    }
+function imageZoom(imgID, resultID) {
+  var img, lens, result, cx, cy;
+  img = document.getElementById(imgID);
+  result = document.getElementById(resultID);
+  /*create lens:*/
+  lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  /*insert lens:*/
+  img.parentElement.insertBefore(lens, img);
+  /*calculate the ratio between result DIV and lens:*/
+  cx = result.offsetWidth / lens.offsetWidth;
+  cy = result.offsetHeight / lens.offsetHeight;
+  /*set background properties for the result DIV:*/
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx ) + "px " + (img.height * cy) + "px";
+  /*execute a function when someone moves the cursor over the image, or the lens:*/
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  /*and also for touch screens:*/
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image:*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    /*calculate the position of the lens:*/
+    x = pos.x - (lens.offsetWidth / 2);
+    y = pos.y - (lens.offsetHeight / 2);
+    /*prevent the lens from being positioned outside the image:*/
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    /*set the position of the lens:*/
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    /*display what the lens "sees":*/
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+
+function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*create magnifier glass:*/
+  glass = document.createElement("DIV");
+  glass.id = "glass1"
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*insert magnifier glass:*/
+  img.parentElement.insertBefore(glass, img);
+  /*set background properties for the magnifier glass:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*execute a function when someone moves the magnifier glass over the image:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*prevent the magnifier glass from being positioned outside the image:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*set the position of the magnifier glass:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*display what the magnifier glass "sees":*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+
+function initComparisons() {
+  var x, i;
+  /*find all elements with an "overlay" class:*/
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /*once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function:*/
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /*get the width and height of the img element*/
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /*set the width of the img element to 50%:*/
+    img.style.width = (w / 2) + "px";
+    /*create slider:*/
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /*insert slider*/
+    img.parentElement.insertBefore(slider, img);
+    /*position the slider in the middle:*/
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /*execute a function when the mouse button is pressed:*/
+    slider.addEventListener("mousedown", slideReady);
+    /*and another function when the mouse button is released:*/
+    window.addEventListener("mouseup", slideFinish);
+    /*or touched (for touch screens:*/
+    slider.addEventListener("touchstart", slideReady);
+    /*and released (for touch screens:*/
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /*prevent any other actions that may occur when moving over the image:*/
+      e.preventDefault();
+      /*the slider is now clicked and ready to move:*/
+      clicked = 1;
+      /*execute a function when the slider is moved:*/
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /*the slider is no longer clicked:*/
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /*if the slider is no longer clicked, exit this function:*/
+      if (clicked == 0) return false;
+      /*get the cursor's x position:*/
+      pos = getCursorPos(e)
+      /*prevent the slider from being positioned outside the image:*/
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /*execute a function that will resize the overlay image according to the cursor:*/
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /*get the x positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x coordinate, relative to the image:*/
+      x = e.pageX - a.left;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /*resize the image:*/
+      img.style.width = x + "px";
+      /*position the slider:*/
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+
+
+<header>
+  <h2>Star Cluster Data</h2>
+   <p style="font-size: 12px; background: #ddd;" ><a href="http://www.gperezs.com/starcluster/vis.html">Go to Results Visualization (Lowest-Highest)</a></p>
+   <p style="font-size: 12px; background: #ddd;" ><a href="http://www.gperezs.com/starcluster/vis2.html">Go to Results Visualization (Highest-Lowest)</a></p>
+</header>
+
+<section>
+<nav>
+
+ <form> 
+        <h4>Galaxy targets</h4>
+        <p>Select the galaxy target to visualize:</p>
+            <div class="form-group">
+                <select class="form-control" id="sel1" onchange="lboxfunc()">
+                    <option onclick="ic4247()" value="ic4247">ic4247</option>
+                    <option onclick="ic559()" value="ic559">ic559</option>
+                    <option onclick="ngc45()" value="ngc45">ngc45</option>
+                    <option onclick="ngc628e()" value="ngc628-e">ngc628-e</option>
+                    <option onclick="ngc628c()" value="ngc628-c">ngc628-c</option>
+                    <option onclick="ngc1313e()" value="ngc1313-e">ngc1313-e</option>
+                    <option onclick="ngc1313w()" value="ngc1313-w">ngc1313-w</option>
+                    <option onclick="ngc1433()" value="ngc1433">ngc1433</option>
+                    <option onclick="ngc1566()" value="ngc1566" selected="selected">ngc1566</option> 
+                    <option onclick="ngc1705()" value="ngc1705">ngc1705</option>
+                    <option onclick="ngc3344()" value="ngc3344">ngc3344</option>
+                    <option onclick="ngc3351()" value="ngc3351">ngc3351</option>
+                    <option onclick="ngc3738()" value="ngc3738">ngc3738</option>
+                    <option onclick="ngc4242()" value="ngc4242">ngc4242</option>
+                    <option onclick="ngc4395n()" value="ngc4395-n">ngc4395-n</option>
+                    <option onclick="ngc4395s()" value="ngc4395-s">ngc4395-s</option>
+                    <option onclick="ngc4449()" value="ngc4449">ngc4449</option> 
+                    <option onclick="ngc4656()" value="ngc4656">ngc4656</option>
+                    <option onclick="ngc5238()" value="ngc5238">ngc5238</option>
+                    <option onclick="ngc5253()" value="ngc5253">ngc5253</option>
+                    <option onclick="ngc5474c()" value="ngc5474-c">ngc5474-c</option>
+                    <option onclick="ngc5477()" value="ngc5477">ngc5477</option>   
+                    <option onclick="ngc6503()" value="ngc6503">ngc6503</option>
+                    <option onclick="ngc7793e()" value="ngc7793-e">ngc7793-e</option>
+                    <option onclick="ngc7793w()" value="ngc7793-w">ngc7793-w</option>
+                    <option onclick="ugc685()" value="ugc685">ugc685</option>
+                    <option onclick="ugc695()" value="ugc695">ugc695</option>
+                    <option onclick="ugc1249()" value="ugc1249">ugc1249</option>
+                    <option onclick="ugc4305()" value="ugc4305">ugc4305</option>
+                    <option onclick="ugc4459()" value="ugc4459">ugc4459</option>
+                    <option onclick="ugc5139()" value="ugc5139">ugc5139</option>
+                    <option onclick="ugc7408()" value="ugc7408">ugc7408</option>
+                    <option onclick="ugca281()" value="ugca281">ugca281</option>              
+                </select>
+            <br>
+            </div>
+
+  <p style="font-size:12px;">Object class description:</p>
+    <ol style="font-size:12px;" start="0">
+        <li>Unassigned class</li>
+        <li>Symetric, compact cluster</li>
+        <li>Concentrated object with some degree of assymetry</li>
+        <li>Multiple peak system</li>
+        <li>Spurious detections (foreground/background sources, single bright stars, artifacts)</li>
+    </ol>
+
+    <h4 id='gtitle2'>Target galaxy ngc1566 stats</h4>
+    <div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+    <ul>
+    	<li id='distance'>Target distance (Mpc): &emsp;13.2</li>
+        <li id='inclination'>Inclination (degrees): &emsp;37.3</li>
+        <li id='tobj'>Total objects: &emsp;&emsp;2,752</li>
+        <li id='class0'>Class 0 objects: &emsp;301</li>  
+        <li id='class1'>Class 1 objects: &emsp;477</li>
+        <li id='class2'>Class 2 objects: &emsp;404</li>
+        <li id='class3'>Class 3 objects: &emsp;692</li>
+        <li id='class4'>Class 4 objects: &emsp;878</li>
+        <li id='imsize'>Original image size: &emsp;6,200 x 6,200 x 5</li>      
+    </ul>  
+    </div>
+<hr>
+  
+    <h4>Target galaxy object mosaic</h4>
+    <p>Press "Load" button to visualize mosaic with objects of class selected: </p>
+    <div  style="font-size:12px; background: #ddd;" >
+    <label style="font-size:12px;"  class="radio-inline" >
+      <input type="radio" name="sclass" value="0">Class 0
+    </label>
+    <label style="font-size:12px;"  class="radio-inline">
+      <input type="radio" name="sclass" value="1" checked>Class 1
+    </label>
+    <label style="font-size:12px;"  class="radio-inline">
+      <input type="radio" name="sclass" value="2">Class 2
+    </label>
+    <label style="font-size:12px;"  class="radio-inline">
+      <input type="radio" name="sclass" value="3">Class 3
+    </label>
+    <label style="font-size:12px;"  class="radio-inline">
+      <input type="radio" name="sclass" value="4">Class 4&emsp;&emsp;    
+    </label>
+    
+  	<input  type="checkbox" id="myCheck" name="Filtered" value="Filtered"> Filtered 
+    </div>
+    <h1></h1>
+        <input id="loadbut" type="button" value="Update mosaic" onclick="clickEvent();" />
+    <h1></h1>
+    <br>
+<div class="img-magnifier-container" style="background: #808080;">    
+    <img src="mosaics_nofilter/ngc1566/mosaic_class_1_im_1.png" alt="mosaic_class_0_im_1.png" id="mosaicim" style="height:auto; width:100%" >
+</div>
+    <p style="font-size:12px;">Average image of all objects of each class (0, 1, 2, 3, and 4). <b>(Left)</b> Filtered average objects. <b>(Right)</b> Non-filtered average objects. </p>
+<table>
+   <tr>
+      <td><img src="mosaics/ngc1566/avg_mosaic.png" alt="avg_mosaic.png" id="mosaicavg" style="height:auto; width:90%"></td>
+  <td><img src="mosaics_nofilter/ngc1566/avg_mosaic.png" alt="avg_mosaic.png" id="mosaicavg2" style="height:auto; width:90%"></div> </td>
+     </tr>
+</table>
+</form> 
+</nav>
+  
+<article>
+    <h3 id="gtitle">NGC 1566</h3>
+    <p style="font-size:12px;">Scroll the target image between filtered (backlight removed) and non-filtered:</p>
+    <div class="img-comp-container">
+  <div class="img-comp-img">
+    <img src="mosaics/ngc1566_galaxy_nofilter.jpg" alt="ngc1566_galaxy.jpg" id="galaxyim" width="1000" height="1000">
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="mosaics/ngc1566_galaxy.jpg" alt="ngc1566_galaxy.jpg" id="galaxyim2" width="1000" height="1000">
+  </div>
+</div>
+    
+
+<p style="font-size:12px;">In order to visualize the objects, pixel values inside [mean-std,mean+std] of each band of each target were used. Then, the image was filtered to remove the background light. The RGB image was formed by combining bands like this:</p>
+<ul style="font-size:12px;">
+<li>Blue = (21.63*F275W + 8.63*F336W) / 2</li>
+<li>Green = 4.52*F438W</li>
+<li>Red = (1.23*F555W + F814W) / 2</li>
+</ul>
+<p style="font-size:12px;">The mosaics are created by cropping 22x22x3 boxes centered on each object coordinates (given in the .tab annotations).</p>
+  </article>
+</section>
+
+<section>
+<footer>
+  <p>General information of the LEGUS dataset</p>
+</footer>
+<nav style="width:62%;">
+<h3></h3>
+<p style="font-size:13px;">Average image of all objects for each galaxy target. Each row is a class (4, 3, 2, 1, and 0 from top to bottom) and each column is a different target (from left to right in the same order as in the listbox).</p>
+<p style="font-size:13px;">Filtered average mosaics:</p>
+<div class="img-zoom-container">
+<table>
+   <tr>
+      <td><img  style="background: #808080;" src="mosaics/avg_all.png" alt="avg_all.png" id="mosaicim2" height="115" width="759"></td>
+      <td>&emsp;</td>
+  <td valign="top"><div id="myresult" class="img-zoom-result"></div> </td>
+     </tr>
+</table>
+</div>
+<p style="font-size:13px;">Non-filtered average mosaics:</p>
+<div class="img-zoom-container">
+<table>
+   <tr>
+      <td><img  style="background: #808080;" src="mosaics_nofilter/avg_all_nofilter.png" alt="avg_all.png" id="mosaicim3" height="115" width="759"></td>
+      <td>&emsp;</td>
+  <td valign="top"><div id="myresult1" class="img-zoom-result"></div> </td>
+     </tr>
+</table>
+    </div>
+</nav>
+<article style="width:38%;">
+<p>Complete LEGUS dataset statistics:</p>
+<div  style="font-size: 12px; font-family: 'Courier New', Courier, monospace; background: #ddd;" >
+    <ul>
+        <li id='tobj'>Number of galaxy targets: &emsp;34</li>
+        <li id='tobj'>Total objects: &emsp;&emsp;84,630 (100.0%) &emsp;Avg: 2,489</li>
+        <li id='class0'>Class 0 objects: &emsp;69,159 (81.72%) &emsp;Avg: 2,034</li>  
+        <li id='class1'>Class 1 objects: &emsp;&emsp;2,489 (2.94%) &emsp;Avg: 73</li>
+        <li id='class2'>Class 2 objects: &emsp;&emsp;3,084 (3.64%) &emsp;Avg: 91</li>
+        <li id='class3'>Class 3 objects: &emsp;&emsp;3,053 (3.61%) &emsp;Avg: 90</li>
+        <li id='class4'>Class 4 objects: &emsp;&emsp;6,845 (8.09%) &emsp;Avg: 201</li>    
+    </ul>
+    </div> 
+    
+    <p>Related links:</p> 
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://archive.stsci.edu/prepds/legus/">Legacy ExtraGalactic UV Survey</a></p>
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://archive.stsci.edu/prepds/legus/dataproducts-public.html">LEGUS public access table</a></p>
+    <p style="font-size: 12px; font-family: 'Courier New', Courier, monospace;" ><a href="https://ned.ipac.caltech.edu/byname?objname=ngc5194&hconst=67.8&omegam=0.308&omegav=0.692">NASA/IPAC Extragalactic Database</a></p>
+</article>
+</section>
+
+
+</body>
+<script>
+initComparisons();
+imageZoom("mosaicim2", "myresult");
+imageZoom("mosaicim3", "myresult1");
+document.getElementById("myCheck").checked = false;
+setTimeout(function(){magnify("mosaicim", 4);}, 3000);
+</script>
+</html>
